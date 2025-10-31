@@ -136,7 +136,7 @@ void RemoveSubarr(int*& arr, int& SIZE, int*& subarr, const int SUBARR_SIZE) {
             throw std::runtime_error("No subarray was fount");
         }
         const int NEW_SIZE = SIZE - SUBARR_SIZE;
-        int* buffer_arr = new int[SIZE - NEW_SIZE];
+        int* buffer_arr = new int[NEW_SIZE];
         for (int i = 0; i < start_index; i++) buffer_arr[i] = arr[i];
         for (int i = start_index; i < NEW_SIZE; i++) buffer_arr[i] = arr[i + SUBARR_SIZE];
 
@@ -214,7 +214,7 @@ int main() {
                 for (int i = 0; i < concatenate_size; i++) {
                     std::cout << "Ente value [" << i << "]: "; std::cin >> additional_arr[i];
                 }
-                Concatenate(arr, concatenate_size, additional_arr, size);
+                Concatenate(arr, size, additional_arr, concatenate_size);
                 delete[] additional_arr;
                 break;
             case 7:
@@ -229,7 +229,7 @@ int main() {
                 for (int i = 0; i < concatenate_size; i++) {
                     std::cout << "Ente value [" << i << "]: "; std::cin >> additional_arr[i];
                 }
-                Concatenate(arr, concatenate_size, additional_arr, size);
+                RemoveSubarr(arr, size, additional_arr, concatenate_size);
                 delete[] additional_arr;
                 break;
             case -1:
